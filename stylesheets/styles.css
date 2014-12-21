@@ -95,11 +95,6 @@ img {
   max-width:100%;
 }
 
-header {
-  width:270px;
-  float:left;
-  position:fixed;
-}
 
 header ul {
   list-style:none;
@@ -119,6 +114,8 @@ header ul {
   border:1px solid #d2d2d2;
   box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
   width:270px;
+
+float: right;
 }
 
 header li {
@@ -157,12 +154,6 @@ header ul a strong {
   font-size:14px;
   display:block;
   color:#222;
-}
-
-section {
-  width:500px;
-  float:right;
-  padding-bottom:50px;
 }
 
 small {

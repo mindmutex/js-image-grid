@@ -1,41 +1,75 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>jQuery Image Grid by mindmutex</title>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>jQuery Image Grid by mindmutex</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>jQuery Image Grid</h1>
-        <p></p>
+		<link rel="stylesheet" href="stylesheets/styles.css">
+		<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+		
+		<link rel="stylesheet" href="https://raw.githack.com/mindmutex/js-image-grid/master/src/css/image-grid.css">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<ul>
+					<li><a href="https://github.com/mindmutex/js-image-grid/zipball/master">Download <strong>ZIP File</strong></a></li>
+					<li><a href="https://github.com/mindmutex/js-image-grid/tarball/master">Download <strong>TAR Ball</strong></a></li>
+					<li><a href="https://github.com/mindmutex/js-image-grid">View On <strong>GitHub</strong></a></li>
+				</ul>
+								
+				<h1>jQuery Image Grid</h1>
+				<p></p>
+				<p class="view">
+					<a href="https://github.com/mindmutex/js-image-grid">View the Project on GitHub <small>mindmutex/js-image-grid</small></a>
+				</p>
+			</header>
 
-        <p class="view"><a href="https://github.com/mindmutex/js-image-grid">View the Project on GitHub <small>mindmutex/js-image-grid</small></a></p>
+			<section>
+				<p>Yet another way to display images in a nice and organized way!</p>
 
+				<ul class="image-grid">
+					<!--
+					<li><a href="javascript:;"><img src="http://lorempixel.com/400/200/" /></a></li>
+					-->
+				</ul>
+				
+				<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+				<script src="https://raw.githack.com/mindmutex/js-image-grid/master/src/image-grid.js"></script>
+				<script type="text/javascript">
+					var element = $('.image-grid');
+					
+					var constraints = [200, 250, 300, 350, 400, 450, 500, 550];
+					for (var i = 0; i < 22; i++) {
+						var w = constraints[Math.floor(Math.random()*constraints.length)];
+						var h = constraints[Math.floor(Math.random()*constraints.length)];
+						
+						element.append('<li><a href="javascript:;"><img src="http://lorempixel.com/' + w + '/' + h + '/" /></a></li>');
+					}
+					
+					element.imageGrid({
+							minHeight: 200, 
+							adjustLastRow: true
+						})
+						.on('checked', function(){
+							console.log('checked', arguments);
+							console.log('value:', layout.imageGrid('value'));
+						})
+						.on('unchecked', function() {
+							console.log('unchecked', arguments);
+						});
+				</script>				
+			</section>
+		</div>
+		<script src="javascripts/scale.fix.js"></script>
 
-        <ul>
-          <li><a href="https://github.com/mindmutex/js-image-grid/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/mindmutex/js-image-grid/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/mindmutex/js-image-grid">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <p>Yet another way to display images in a nice and organized way!</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/mindmutex">mindmutex</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+	</body>
 </html>
