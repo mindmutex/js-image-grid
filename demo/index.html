@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Image Grid</title>
+		
+		<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="../src/css/image-grid.css" />
+		
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-8">
+					<ul class="image-grid">
+						<!--
+						<li><a href="javascript:;"><img src="http://lorempixel.com/400/200/" /></a></li>
+						-->
+					</ul>
+				</div>
+				<div class="col-xs-4">
+					Pictures are loaded randomly from:<br> 
+					<a href="http://lorempixel.com">http://lorempixel.com</a>
+				</div>
+			</div>
+		</div>
+
+		<script src="../bower_components/jquery/dist/jquery.js"></script>
+		<script src="../src/image-grid.js"></script>
+		<script type="text/javascript">
+			var element = $('.image-grid');
+			
+			var constraints = [200, 250, 300, 350, 400, 450, 500, 550];
+			for (var i = 0; i < 20; i++) {
+				var w = constraints[Math.floor(Math.random()*constraints.length)];
+				var h = constraints[Math.floor(Math.random()*constraints.length)];
+				
+				element.append('<li><a href="javascript:;"><img src="http://lorempixel.com/' + w + '/' + h + '/" /></a></li>');
+			}
+			
+			element.imageGrid()
+				.on('checked', function(){
+					console.log('checked', arguments);
+					console.log('value:', layout.imageGrid('value'));
+				})
+				.on('unchecked', function() {
+					console.log('unchecked', arguments);
+				});
+		</script>
+	</body>
+</html>

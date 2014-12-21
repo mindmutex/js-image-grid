@@ -1,0 +1,28 @@
+{
+  "name": "image-grid",
+  "title": "Image Grid",
+  "description": "Simple jQuery plugin for displaying images in a tiled grid",
+  "version": "1.0",
+  "homepage": "https://github.com/image-tiles",
+  "author": {
+    "name": "ivarsv",
+    "url": "https://github.com/mindmutex"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/image-tiles"
+  },
+  "bugs": "",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "latest"
+  },
+  "keywords": [
+    "jquery-plugin"
+  ]
+}

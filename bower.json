@@ -1,0 +1,10 @@
+{
+  "name": "image-tiles",
+  "version": "",
+  "dependencies": {},
+  "devDependencies": {
+    "qunit": "~1.12.0",
+    "jquery": "latest",
+    "bootstrap": "~3.3.1"
+  }
+}
