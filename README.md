@@ -14,3 +14,5 @@ jQuery(function($) {
 });
 </script>
 ```
+## Demo
+http://mindmutex.github.io/js-image-grid/
