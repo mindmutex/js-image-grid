@@ -10,7 +10,8 @@
 	}
 	
 	ImageGrid.prototype.setContentWidth = function() {
-		this.containerWidth = this.element.width() - this.options.margin * 2;
+		// the extra -1 is for safety, sometimes there is a glitch that causes the images to wrap scrollbar appears. 
+		this.containerWidth = this.element.width() - this.options.margin * 2 - 1;
 	};
 
 	ImageGrid.prototype.create = function() {
@@ -59,13 +60,22 @@
 		} else {
 			var self = this, timeout;
 			images.load(function(){
-				if (++readyImages >= images.length) {
-					clearTimeout(timeout);
-					timeout = setTimeout(function(){
-						self.draw();	
-					}, 100);
-					
-				}
+				clearTimeout(timeout);
+				timeout = setTimeout(function(){
+					// check if all images have been loaded.
+					var hasLoaded = 0;
+					for (var i = 0; i < images.length; i++) {
+						var image = $(images[i]).height(self.options.defaultHeight);
+						if (image.width() !== 0) {
+							hasLoaded++;
+						}
+					}
+					if (hasLoaded === images.length) {
+						timeout = setTimeout(function() {
+							self._invalidate();	
+						}, 100);
+					}	
+				}, 100);
 			});
 		}		
 	};
@@ -114,7 +124,6 @@
 		var row = 0, children = [];
 		for (var i = 0; i < this.children.length; i++) {
 			var column = $(this.children[i]), width = column.outerWidth(true);
-			
 			if (row + width >= this.containerWidth) {
 				this.drawRow(children, row);
 				
